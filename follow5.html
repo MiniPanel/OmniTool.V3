@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Tracker</title>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1742a4;
+            --bg: #181920;
+            --panel: #23242c;
+            --border: #35364a;
+            --text: #eef2fb;
+            --secondary: #23242c;
+            --danger: #ef4444;
+            --danger-hover: #b91c1c;
+            --success: #22c55e;
+            --success-hover: #15803d;
+            --action: #3b82f6;
+            --action-hover: #1d4ed8;
+            --input-bg: #181920;
+            --input-border: #35364a;
+            --input-placeholder: #8892b0;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            font-family: 'Inter', Arial, sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+        }
+        h2 {
+            font-weight: 600;
+            color: var(--primary);
+            text-align: center;
+            margin: 40px 0 30px;
+            letter-spacing: 0.01em;
+            font-size: 2rem;
+        }
+        .container {
+            background: var(--panel);
+            max-width: 430px;
+            margin: 0 auto;
+            padding: 32px 20px 25px 20px;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(30, 41, 59, 0.16);
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 1.5px solid var(--border);
+            margin-bottom: 18px;
+        }
+        .tab {
+            flex: 1;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 10px 0;
+            background: none;
+            color: var(--primary);
+            border: none;
+            border-bottom: 2.5px solid transparent;
+            transition: color 0.15s, border 0.15s, background 0.14s;
+            cursor: pointer;
+            outline: none;
+            border-radius: 14px 14px 0 0;
+        }
+        .tab.active {
+            color: var(--text);
+            border-bottom: 2.5px solid var(--primary);
+            background: var(--panel);
+        }
+        .form-container {
+            display: none;
+            animation: fadeIn 0.32s;
+        }
+        .form-container.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            0% {opacity: 0; transform: translateY(18px);}
+            100% {opacity: 1; transform: translateY(0);}
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+        .form-row label {
+            min-width: 140px;
+            margin-right: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .form-row input,
+        .form-row textarea {
+            flex: 1 1 0%;
+            width: 100%;
+            max-width: 100%;
+            background: var(--input-bg);
+            border: 1.5px solid var(--input-border);
+            border-radius: 8px;
+            padding: 10px 11px;
+            font-size: 1rem;
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.18s, background 0.19s;
+        }
+        .form-row input:focus,
+        .form-row textarea:focus {
+            border-color: var(--primary);
+            background: #222336;
+        }
+        .form-row textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+        ::placeholder {
+            color: var(--input-placeholder);
+            opacity: 1;
+        }
+        #buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 7px;
+            flex-wrap: wrap;
+        }
+        button {
+            font-family: inherit;
+            font-size: 0.99rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            background: var(--action);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.13s, box-shadow 0.13s;
+            box-shadow: 0 1px 4px 0 rgba(30, 41, 59, 0.04);
+            outline: none;
+        }
+        button:active {
+            background: var(--action-hover);
+        }
+        #saveBtn, #saveBtnOld {
+            background: var(--primary);
+        }
+        #saveBtn:active, #saveBtnOld:active {
+            background: var(--primary-hover);
+        }
+        #exportExcelBtn, #exportExcelBtnOld {
+            background: var(--success);
+        }
+        #exportExcelBtn:active, #exportExcelBtnOld:active {
+            background: var(--success-hover);
+        }
+        #exportPdfBtn, #exportPdfBtnOld {
+            background: var(--action);
+        }
+        #exportPdfBtn:active, #exportPdfBtnOld:active {
+            background: var(--action-hover);
+        }
+        #clearDataBtn, #clearDataBtnOld {
+            background: var(--danger);
+        }
+        #clearDataBtn:active, #clearDataBtnOld:active {
+            background: var(--danger-hover);
+        }
+        @media (max-width: 520px) {
+            .container {
+                padding: 13px 1vw 13px 1vw;
+                max-width: 99vw;
+            }
+            h2 {
+                font-size: 1.15rem;
+                margin-top: 16px;
+                margin-bottom: 5px;
+            }
+            .form-row label {
+                min-width: 90px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Chat Tracker</h2>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab active" id="newChatTab" type="button">New Chat</button>
+            <button class="tab" id="oldChatTab" type="button">Old Chat</button>
+        </div>
+
+        <div class="form-container active" id="newChatForm">
+            <form autocomplete="off">
+                <input type="hidden" id="chatType" value="New Chat">
+                <div class="form-row">
+                    <label for="contact">Contact Number</label>
+                    <input type="text" id="contact" required autocomplete="off" placeholder="Contact number">
+                </div>
+                <div class="form-row">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required autocomplete="off" placeholder="Name">
+                </div>
+                <div class="form-row">
+                    <label for="caseId">Case ID</label>
+                    <input type="text" id="caseId" required autocomplete="off" placeholder="Case ID">
+                </div>
+                <div class="form-row">
+                    <label for="issue">Issue Description</label>
+                    <textarea id="issue" required placeholder="Describe the issue"></textarea>
+                </div>
+                <div id="buttons">
+                    <button type="button" id="saveBtn">Save</button>
+                    <button type="button" id="exportExcelBtn">Export Excel</button>
+                    <button type="button" id="exportPdfBtn">Export PDF</button>
+                    <button type="button" id="clearDataBtn">Clear Data</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-container" id="oldChatForm">
+            <form autocomplete="off">
+                <input type="hidden" id="chatTypeOld" value="Old Chat">
+                <div class="form-row">
+                    <label for="contactOld">Contact Number</label>
+                    <input type="text" id="contactOld" required autocomplete="off" placeholder="Contact number">
+                </div>
+                <div class="form-row">
+                    <label for="nameOld">Name</label>
+                    <input type="text" id="nameOld" required autocomplete="off" placeholder="Name">
+                </div>
+                <div class="form-row">
+                    <label for="caseIdOld">Case ID</label>
+                    <input type="text" id="caseIdOld" required autocomplete="off" placeholder="Case ID">
+                </div>
+                <div class="form-row">
+                    <label for="issueOld">Issue Description</label>
+                    <textarea id="issueOld" required placeholder="Describe the issue"></textarea>
+                </div>
+                <div id="buttons">
+                    <button type="button" id="saveBtnOld">Save</button>
+                    <button type="button" id="exportExcelBtnOld">Export Excel</button>
+                    <button type="button" id="exportPdfBtnOld">Export PDF</button>
+                    <button type="button" id="clearDataBtnOld">Clear Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Data conversion/cleanup
+        let entries = JSON.parse(localStorage.getItem('entries') || '[]').map(e => {
+            if (e['Date & Time'] && !e['Date']) {
+                const parts = e['Date & Time'].split(', ');
+                e['Date'] = parts[0];
+                e['Time'] = parts[1];
+                delete e['Date & Time'];
+            }
+            return e;
+        });
+        localStorage.setItem('entries', JSON.stringify(entries));
+
+        // Tab logic
+        const tabs = document.querySelectorAll('.tab');
+        const forms = document.querySelectorAll('.form-container');
+        tabs.forEach((tab, idx) => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                forms.forEach(f => f.classList.remove('active'));
+                tab.classList.add('active');
+                forms[idx].classList.add('active');
+            });
+        });
+
+        // Save logic
+        function saveData(type, contact, name, caseId, issue) {
+            if (!contact.trim() || !name.trim() || !caseId.trim() || !issue.trim()) {
+                alert('Please fill out all fields.');
+                return false;
+            }
+            const now = new Date();
+            const date = now.toLocaleDateString();
+            const time = now.toLocaleTimeString();
+            entries.push({
+                "Chat Type": type,
+                "Contact Number": contact,
+                "Name": name,
+                "Case ID": caseId,
+                "Issue Description": issue,
+                "Date": date,
+                "Time": time
+            });
+            localStorage.setItem('entries', JSON.stringify(entries));
+            alert('Data saved.');
+            return true;
+        }
+
+        document.getElementById('saveBtn').addEventListener('click', () => {
+            if (saveData(
+                document.getElementById('chatType').value,
+                document.getElementById('contact').value,
+                document.getElementById('name').value,
+                document.getElementById('caseId').value,
+                document.getElementById('issue').value
+            )) {
+                document.querySelector('#newChatForm form').reset();
+            }
+        });
+
+        document.getElementById('saveBtnOld').addEventListener('click', () => {
+            if (saveData(
+                document.getElementById('chatTypeOld').value,
+                document.getElementById('contactOld').value,
+                document.getElementById('nameOld').value,
+                document.getElementById('caseIdOld').value,
+                document.getElementById('issueOld').value
+            )) {
+                document.querySelector('#oldChatForm form').reset();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                const activeTab = document.querySelector('.form-container.active');
+                if (activeTab.id === 'newChatForm') {
+                    document.getElementById('saveBtn').click();
+                } else {
+                    document.getElementById('saveBtnOld').click();
+                }
+            }
+        });
+
+        function getFileName() {
+            const today = new Date();
+            const dateStr = today.toLocaleDateString().replace(/\//g, '-');
+            return `chats-picked-on-${dateStr}`;
+        }
+
+        function exportExcel() {
+            if (entries.length === 0) {
+                alert('No entries to export.');
+                return;
+            }
+            const sortedEntries = [...entries].sort((a, b) => a["Chat Type"] === 'New Chat' ? -1 : 1).map(e => ({
+    ...e,
+    "Chat Type": e["Chat Type"] === 'New Chat' ? 'NC' : 'OC'
+}));
+
+            const worksheet = XLSX.utils.json_to_sheet(sortedEntries);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, 'Chats');
+            XLSX.writeFile(workbook, `${getFileName()}.xlsx`);
+            alert('Excel file exported.');
+        }
+
+        function exportPDF() {
+            if (entries.length === 0) {
+                alert('No entries to export.');
+                return;
+            }
+            const sortedEntries = [...entries].sort((a, b) => a["Chat Type"] === 'New Chat' ? -1 : 1);
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.setFont('helvetica','bold');
+            doc.setFontSize(17);
+            doc.setTextColor(37,99,235);
+            doc.text("Chat Entries", 16, 19);
+            const tableData = sortedEntries.map(e => [e["Chat Type"], e["Contact Number"], e["Name"], e["Case ID"], e["Issue Description"], e["Date"], e["Time"]]);
+            doc.autoTable({
+                head: [["Chat Type", "Contact Number", "Name", "Case ID", "Issue Description", "Date", "Time"]],
+                body: tableData,
+                startY: 28
+            });
+            doc.save(`${getFileName()}.pdf`);
+            alert('PDF file exported.');
+        }
+
+        function clearAllData() {
+            const pin = prompt('Enter PIN to clear data:');
+            if (pin === '4567') {
+                if (confirm('Are you sure you want to delete all saved entries?')) {
+                    entries = [];
+                    localStorage.removeItem('entries');
+                    alert('All data cleared.');
+                }
+            } else {
+                alert('Incorrect PIN. Data not cleared.');
+            }
+        }
+
+        document.getElementById('exportExcelBtn').addEventListener('click', exportExcel);
+        document.getElementById('exportPdfBtn').addEventListener('click', exportPDF);
+        document.getElementById('clearDataBtn').addEventListener('click', clearAllData);
+
+        document.getElementById('exportExcelBtnOld').addEventListener('click', exportExcel);
+        document.getElementById('exportPdfBtnOld').addEventListener('click', exportPDF);
+        document.getElementById('clearDataBtnOld').addEventListener('click', clearAllData);
+    </script>
+</body>
+</html>

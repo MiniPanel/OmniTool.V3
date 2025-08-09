@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TROUBLESHOOTING STEPS</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: pink;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .button-62 {
+            background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+            border: 0;
+            border-radius: 12px;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+                sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 2.5;
+            outline: transparent;
+            padding: 0 1rem;
+            text-align: center;
+            text-decoration: none;
+            transition: box-shadow 0.2s ease-in-out;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            margin: 10px;
+            width: 320px;
+            box-sizing: border-box;
+        }
+
+        .button-62:not([disabled]):focus,
+        .button-62:not([disabled]):hover {
+            box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+                -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+                0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
+        }
+
+
+  </style>
+
+  <h1>PROBING QUESTIONS</h1>
+<br>
+<br>
+
+  <div class="button-62" onclick="copyToClipboard('May I know since when are you facing this issue?')">
+    1. MIK?
+  </div>
+
+  <div class="button-62" onclick="copyToClipboard('Did the laptop run out of battery or did it randomly shutdown and did not power on again?')">
+    2. Drain/Random
+  </div>
+
+  <div class="button-62" onclick="copyToClipboard('Do the lights on the keyboard light up and is there any fan noise heard when powered on?')">
+    3. Light/Fan Activity
+  </div>
+
+  <div class="button-62" onclick="copyToClipboard('Please confirm if the led next to the charging port is lit when connected to the charger that was shipped with the unit?')">
+    4. LED near charging port
+  </div>
+
+  <div class="button-62" onclick="copyToClipboard('Please confirm if you have used a different working charger and the issue still remains the same.')">
+    5. Different charger?
+  </div>
+
+  <div class="button-62" onclick="copyToClipboard('Please confirm if the issue occurred after any windows or driver update?')">
+    6. After driver or Windows update?
+  </div>
+
+  <div class="button-62" onclick="copyToClipboard('Please confirm if there are any damages on the display?')">
+    7. Damaged display?
+  </div>
+
+  <div class="button-62" onclick="copyToClipboard('Does the light on the Caps lock blink when pressed?')">
+    8. Caps lock blinks?
+  </div>
+
+  <div class="button-62" onclick="copyToClipboard('Please connect the laptop to an external display such as monitor or TV and check to see if the issue is observed there as well?')">
+    9. external display
+  </div>
+
+  <div class="button-62" onclick="copyToClipboard('Please boot the laptop into BIOS mode and check to see if the issue is observed there as well?')">
+    10. Check in BIOS
+  </div>
+
+  <div class="button-62" onclick="copyToClipboard('Please do share an image of the CT number on the Adapter as we would need to have it validated, before proceeding further?')">
+    11.  CT number
+  </div>
+
+  <div class="button-62" onclick="copyToClipboard('Press windows and R together, in the pop-up please type and search for msinfo32 please do share an image of the screen that comes up')">
+    12. BIOS version (msinfo32)
+  </div>
+
+<div class="button-62" onclick="copyToClipboard('1. May I know since when are you facing this issue?\n\n2. May I know if there were any hardware changes or software updates made to the unit?\n\n3. May I know if there are any physical damages or liquid spillage happened on the unit?')">13. Basic 3
+  </div>
+
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function () {
+        alert("Copied to clipboard.");
+      }, function (err) {
+        console.error('Could not copy text: ', err);
+      });
+    }
+  </script>
+
+</body>
+</html>

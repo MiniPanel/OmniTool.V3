@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML to TXT Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    textarea, #output {
+      width: 100%;
+      min-height: 200px;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+    #dropZone {
+      border: 2px dashed #888;
+      padding: 30px;
+      text-align: center;
+      color: #555;
+      margin-bottom: 15px;
+      transition: 0.3s;
+    }
+    #dropZone.dragover {
+      background-color: #e0e0e0;
+      border-color: #333;
+    }
+    button, input[type="file"] {
+      padding: 10px 15px;
+      margin-top: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #downloadBtn, #saveBtn {
+      display: none;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>HTML to TXT Converter</h2>
+
+  <div id="dropZone">📁 Drag & Drop your HTML file here or click to upload</div>
+  <input type="file" id="fileInput" accept=".html, .htm">
+
+  <label for="htmlInput"><strong>Or paste HTML manually:</strong></label>
+  <textarea id="htmlInput" placeholder="Paste HTML code here..."></textarea>
+
+  <button onclick="convertToText()">Convert</button>
+  <button id="downloadBtn" onclick="downloadText()">Download .txt</button>
+  <button id="saveBtn" onclick="saveAsPrompt()">Save As...</button>
+
+  <h3>Output (Plain Text):</h3>
+  <div id="output"></div>
+
+  <script>
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const htmlInput = document.getElementById('htmlInput');
+    const output = document.getElementById('output');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const saveBtn = document.getElementById('saveBtn');
+
+    let currentFileName = 'converted'; // Default file name
+
+    function convertToText(inputHTML = '') {
+      const html = inputHTML || htmlInput.value;
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+      const text = tempDiv.textContent || tempDiv.innerText || '';
+      output.textContent = text.trim();
+      downloadBtn.style.display = 'inline-block';
+      saveBtn.style.display = 'inline-block';
+    }
+
+    dropZone.addEventListener('dragover', e => {
+      e.preventDefault();
+      dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      handleFile(file);
+    });
+
+    dropZone.addEventListener('click', () => fileInput.click());
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      handleFile(file);
+    });
+
+    function handleFile(file) {
+      if (file && file.type.includes('html')) {
+        currentFileName = file.name.replace(/\.[^/.]+$/, '');
+        const reader = new FileReader();
+        reader.onload = e => {
+          htmlInput.value = e.target.result;
+          convertToText(e.target.result);
+        };
+        reader.readAsText(file);
+      } else {
+        alert('Please upload a valid .html file.');
+      }
+    }
+
+    function downloadText() {
+      const blob = new Blob([output.textContent], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = currentFileName + '.txt';
+      link.click();
+    }
+
+    function saveAsPrompt() {
+      const blob = new Blob([output.textContent], { type: 'text/plain' });
+      const fileHandle = document.createElement('a');
+      fileHandle.href = URL.createObjectURL(blob);
+      fileHandle.download = currentFileName + '.txt';
+      fileHandle.style.display = 'none';
+      document.body.appendChild(fileHandle);
+      fileHandle.click();
+      document.body.removeChild(fileHandle);
+    }
+  </script>
+
+</body>
+</html>

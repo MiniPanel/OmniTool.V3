@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text to TXT File</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: pink; /* Pink Background */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    textarea {
+      width: 80%;
+      height: 200px;
+      margin-bottom: 10px; /* Reduced margin */
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+    input[type="text"] {
+      width: 78%; /* Adjusted width to account for padding and border */
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box; /* Ensures padding and border are included in the width */
+    }
+    button {
+            background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+            border: 0;
+            border-radius: 12px;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+                sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 2.5;
+            outline: transparent;
+            padding: 0 1rem;
+            text-align: center;
+            text-decoration: none;
+            transition: box-shadow 0.2s ease-in-out;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            margin: 10px;
+            width: 320px;
+            box-sizing: border-box;
+        }
+
+        .button:not([disabled]):focus,
+        .button:not([disabled]):hover {
+            box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+                -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+                0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
+        }
+
+  </style>
+</head>
+<body>
+  <h1>Convert .txt</h1>
+  <input type="text" id="fileNameInput" placeholder="Enter file name (without .txt)">
+  <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+  <button onclick="downloadText()">Download as TXT</button>
+
+  <script>
+    function downloadText() {
+      const text = document.getElementById("textInput").value;
+      const fileName = document.getElementById("fileNameInput").value;
+
+      // Check if text is empty
+      if (!text) {
+        alert("Please enter contents in the text area.");
+        return; // Do not proceed with download
+      }
+      const finalFileName = fileName || "output";
+
+      const blob = new Blob([text], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = finalFileName + ".txt";
+      link.click();
+    }
+  </script>
+</body>
+</html>

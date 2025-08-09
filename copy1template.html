@@ -1,0 +1,1991 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Copy Templates</title>
+    <style>
+        body {
+            background-color: pink;
+        }
+
+   .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .button-62 {
+            background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+            border: 0;
+            border-radius: 12px;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 2.5;
+            outline: transparent;
+            padding: 0 1rem;
+            text-align: center;
+            text-decoration: none;
+            transition: box-shadow 0.2s ease-in-out;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            margin: 10px;
+            width: 320px;
+            box-sizing: border-box;
+        }
+
+        .button-62:not([disabled]):focus,
+        .button-62:not([disabled]):hover {
+            box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+                        -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+                        0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
+        }
+
+
+    @media (min-width: 768px) {
+      .button-64 {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+        }
+    </style>
+    <script>
+        function copyToClipboard(content) {
+            navigator.clipboard.writeText(content).then(function() {
+                alert('Template copied to clipboard!');
+            }, function(err) {
+                alert('Failed to copy: ' + err);
+            });
+        }
+
+        function copyAustraliaOnsiteTemplate() {
+            const template = `************************************************** Case Title **************************************************
+||
+AU/ WARR/ NBD/ ONS/ *Laptop model name*/ *issue mentioned in just 2 words*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: *issue*
+*troubleshooting performed*
+
+===================================================
+
+*Pre tool recommendation for part*
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *serial number*
+Product Number: *product number*
+Customer Name: *customers name*
+Customer Phone Number: *customers contact number*
+Customer Alternate Phone Number: 
+Email Address: *customers email address*
+Company Name: 
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+
+*Pre tool recommendation for part*
+Customer Address: 
+Add. Line 1: *house number*
+Add. Line 2: *street  name*
+Add. Line 3: *city name*
+Add. Line 4: *state*
+Add. Line 5: *postal code*
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+************************************************** Onsite Template **************************************************
+||
+Is it a Quote? No
+Work Order Description: 
+Country: AU
+Type of Coverage: WARR
+Coverage: NBD
+Service Type: ONS
+
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+
+*Pre tool recommendation for part*
+Serial Number: *serial number*
+Failure Id: na
+CT Number: na
+Wise Advisory? No
+Action plan for technician: part replacement
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+`;
+
+            copyToClipboard(template);
+        }
+
+        function copyNZOnsiteTemplate() {
+            const template = `@************************************************** Case Title **************************************************
+||
+NZ/ WARR/ NBD/ ONS/ *Laptop model name*/ *issue mentioned in just 2 words*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: *issue*
+*troubleshooting performed*
+
+===================================================
+*Pre tool recommendation for part*
+
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *serial number*
+Product Number: *product number*
+Customer Name: *customers name*
+Customer Phone Number: *customers contact number*
+Customer Alternate Phone Number: 
+Email Address: *customers email address*
+Company Name: 
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+*Pre tool recommendation for part*
+
+Customer Address: 
+Add. Line 1: *house number*
+Add. Line 2: *street  name*
+Add. Line 3: *city name*
+Add. Line 4: *state*
+Add. Line 5: *postal code*
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+************************************************** Onsite Template **************************************************
+||
+Is it a Quote? No
+Work Order Description: 
+Country: NZ
+Type of Coverage: WARR
+Coverage: NBD
+Service Type: ONS
+
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+Failure Id: na
+CT Number: na
+Wise Advisory? No
+Action plan for technician: part replacement
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+`;
+
+            copyToClipboard(template);
+        }
+
+ function copyMYOnsiteTemplate() {
+            const template = `@************************************************** Case Title **************************************************
+||
+MY/ WARR/ 3BD/ ONS/ *Laptop model name*/ *issue mentioned in just 2 words*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: *issue*
+*troubleshooting performed*
+
+===================================================
+*PRE_Part_Recommendation_Engine *
+
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *serial number*
+Product Number: *product number*
+Customer Name: *customers name*
+Customer Phone Number: *customers contact number*
+Customer Alternate Phone Number: 
+Email Address: *customers email address*
+Company Name: 
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+*PRE_Part_Recommendation_Engine *
+
+Customer Address: 
+Add. Line 1: *house number*
+Add. Line 2: *street  name*
+Add. Line 3: *city name*
+Add. Line 4: *state*
+Add. Line 5: *postal code*
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+************************************************** Onsite Template **************************************************
+||
+Is it a Quote? No
+Work Order Description: 
+Country: MY
+Type of Coverage: WARR
+Coverage: 3BD
+Service Type: ONS
+
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+*PRE_Part_Recommendation_Engine *
+
+Serial Number: *serial number*
+Failure Id: na
+CT Number: na
+Wise Advisory? No
+Action plan for technician: part replacement
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+`;
+
+            copyToClipboard(template);
+        }
+
+function copySGOnsiteTemplate() {
+            const template = `@s************************************************** Case Title **************************************************
+||
+SG/ WARR/ 3BD/ ONS/ *Laptop model name*/ *issue mentioned in just 2 words*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: *issue*
+*troubleshooting performed*
+
+===================================================
+*Pre tool recommendation for part*
+
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *serial number*
+Product Number: *product number*
+Customer Name: *customers name*
+Customer Phone Number: *customers contact number*
+Customer Alternate Phone Number: 
+Email Address: *customers email address*
+Company Name: 
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+*Pre tool recommendation for part*
+
+Customer Address: 
+Add. Line 1: *house number*
+Add. Line 2: *street  name*
+Add. Line 3: *city name*
+Add. Line 4: *state*
+Add. Line 5: *postal code*
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+************************************************** Onsite Template **************************************************
+||
+Is it a Quote? No
+Work Order Description: 
+Country: SG
+Type of Coverage: WARR
+Coverage: 3BD
+Service Type: ONS
+
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+Failure Id: na
+CT Number: na
+Wise Advisory? No
+Action plan for technician: part replacement
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+
+`;
+
+            copyToClipboard(template);
+        }
+
+function copyPHOnsiteTemplate() {
+            const template = `************************************************** Case Title **************************************************
+||
+PH/ WARR/ 3BD/ ONS/ *Laptop model name*/ *issue mentioned in just 2 words*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: *issue*
+*troubleshooting performed*
+
+===================================================
+*Pre tool recommendation for part*
+
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *serial number*
+Product Number: *product number*
+Customer Name: *customers name*
+Customer Phone Number: *customers contact number*
+Customer Alternate Phone Number: 
+Email Address: *customers email address*
+Company Name: 
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+*Pre tool recommendation for part*
+
+Customer Address: 
+Add. Line 1: *house number*
+Add. Line 2: *street  name*
+Add. Line 3: *city name*
+Add. Line 4: *state*
+Add. Line 5: *postal code*
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+************************************************** Onsite Template **************************************************
+||
+Is it a Quote? No
+Work Order Description: 
+Country: PH
+Type of Coverage: WARR
+Coverage: 3BD
+Service Type: ONS
+
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+Failure Id: na
+CT Number: na
+Wise Advisory? No
+Action plan for technician: part replacement
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+
+`;
+
+            copyToClipboard(template);
+        }
+
+function copyIDOnsiteTemplate() {
+            const template = `************************************************** Case Title **************************************************
+||
+ID/ WARR/ 3BD/ ONS/ *Laptop model name*/ *issue mentioned in just 2 words*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: *issue*
+*troubleshooting performed*
+
+===================================================
+*Pre tool recommendation for part*
+
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *serial number*
+Product Number: *product number*
+Customer Name: *customers name*
+Customer Phone Number: *customers contact number*
+Customer Alternate Phone Number: 
+Email Address: *customers email address*
+Company Name: 
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+*Pre tool recommendation for part*
+
+Customer Address: 
+Add. Line 1: *house number*
+Add. Line 2: *street  name*
+Add. Line 3: *city name*
+Add. Line 4: *state*
+Add. Line 5: *postal code*
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+************************************************** Onsite Template **************************************************
+||
+Is it a Quote? No
+Work Order Description: 
+Country: ID
+Type of Coverage: WARR
+Coverage: 3BD
+Service Type: ONS
+
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+Failure Id: na
+CT Number: na
+Wise Advisory? No
+Action plan for technician: part replacement
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+
+`;
+
+            copyToClipboard(template);
+        }
+
+function copynzqoTemplate() {
+            const template = `@************************************************** Case Title **************************************************
+||
+NZ/ TRADE/ 3BD/ ONS/ *laptop model name*/ *issue*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *serial number*
+Product Number: *product number*
+Customer Name: *customer name*
+Customer Phone Number: *Customer Phone Number *
+Customer Alternate Phone Number: na
+Email Address: *Email Address *
+Company Name: *company name if mentioned in address else NA**
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+Customer Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+************************************************** Onsite Template **************************************************
+||
+Is it a Quote? Yes
+Work Order Description: 
+Country: NZ
+Special: TRADE
+Coverage: 3BD
+Service Type: ONS
+
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+Serial Number: *serial number*
+Failure Id: na
+CT Number: na
+Wise Advisory? No
+Action plan for technician: Part replacement
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+
+======== Quote ========
+Issue Reported by Customer: na
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+Parts Available: Yes
+Name of Contact On Quote: *customer name*
+Company Name on Quote: *company name if mentioned in address else NA**
+Primary Phone Number: *Customer Phone Number *
+Alternate Phone Number: na
+Email Address: *Email Address *
+Service Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Name (If different than Customer Name): 
+Billing Contact Number (If different than Customer Phone Number): 
+Is Chargeable Repair KCI Done: Yes
+Serial Number of Unit: *serial number*
+||
+
+
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+
+`;
+
+            copyToClipboard(template);
+        }
+
+function copyauqoTemplate() {
+            const template = `@a************************************************** Case Title **************************************************
+||
+AU/ TRADE/ 3BD/ ONS/ *laptop model name*/ *issue*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *serial number*
+Product Number: *product number*
+Customer Name: *customer name*
+Customer Phone Number: *Customer Phone Number *
+Customer Alternate Phone Number: na
+Email Address: *Email Address *
+Company Name: *company name if mentioned in address else NA**
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+Customer Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+************************************************** Onsite Template **************************************************
+||
+Is it a Quote? Yes
+Work Order Description: 
+Country: AU
+Special: TRADE
+Coverage: 3BD
+Service Type: ONS
+
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+Serial Number: *serial number*
+Failure Id: na
+CT Number: na
+Wise Advisory? No
+Action plan for technician: Part replacement
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+
+======== Quote ========
+Issue Reported by Customer: na
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+Parts Available: Yes
+Name of Contact On Quote: *customer name*
+Company Name on Quote: *company name if mentioned in address else NA**
+Primary Phone Number: *Customer Phone Number *
+Alternate Phone Number: na
+Email Address: *Email Address *
+Service Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Name (If different than Customer Name): 
+Billing Contact Number (If different than Customer Phone Number): 
+Is Chargeable Repair KCI Done: Yes
+Serial Number of Unit: *serial number*
+||
+
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+`;
+
+            copyToClipboard(template);
+        }
+
+function copymyqoTemplate() {
+            const template = `************************************************** Case Title **************************************************
+||
+MY/ TRADE/ 3BD/ ONS/ *laptop model name*/ *issue*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *serial number*
+Product Number: *product number*
+Customer Name: *customer name*
+Customer Phone Number: *Customer Phone Number *
+Customer Alternate Phone Number: na
+Email Address: *Email Address *
+Company Name: *company name if mentioned in address else NA**
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+Customer Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+************************************************** Onsite Template **************************************************
+||
+Is it a Quote? Yes
+Work Order Description: 
+Country: MY
+Special: TRADE
+Coverage: 3BD
+Service Type: ONS
+
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+Serial Number: *serial number*
+Failure Id: na
+CT Number: na
+Wise Advisory? No
+Action plan for technician: Part replacement
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+
+======== Quote ========
+Issue Reported by Customer: na
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+Parts Available: Yes
+Name of Contact On Quote: *customer name*
+Company Name on Quote: *company name if mentioned in address else NA**
+Primary Phone Number: *Customer Phone Number *
+Alternate Phone Number: na
+Email Address: *Email Address *
+Service Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Name (If different than Customer Name): 
+Billing Contact Number (If different than Customer Phone Number): 
+Is Chargeable Repair KCI Done: Yes
+Serial Number of Unit: *serial number*
+||
+
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+
+`;
+
+            copyToClipboard(template);
+        }
+
+function copysgqoTemplate() {
+            const template = `@s************************************************** Case Title **************************************************
+||
+SG/ TRADE/ 3BD/ ONS/ *laptop model name*/ *issue*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+
+*Pre tool recommendation for part*
+Serial Number: *serial number*
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *serial number*
+Product Number: *product number*
+Customer Name: *customer name*
+Customer Phone Number: *Customer Phone Number *
+Customer Alternate Phone Number: na
+Email Address: *Email Address *
+Company Name: *company name if mentioned in address else NA**
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+
+*Pre tool recommendation for part*
+Serial Number: *serial number*
+Customer Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+************************************************** Onsite Template **************************************************
+||
+Is it a Quote? Yes
+Work Order Description: 
+Country: SG
+Special: TRADE
+Coverage: 3BD
+Service Type: ONS
+
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+
+*Pre tool recommendation for part*
+Serial Number: *serial number*
+Serial Number: *serial number*
+Failure Id: na
+CT Number: na
+Wise Advisory? No
+Action plan for technician: Part replacement
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+
+======== Quote ========
+Issue Reported by Customer: na
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+Parts Available: Yes
+Name of Contact On Quote: *customer name*
+Company Name on Quote: *company name if mentioned in address else NA**
+Primary Phone Number: *Customer Phone Number *
+Alternate Phone Number: na
+Email Address: *Email Address *
+Service Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Name (If different than Customer Name): 
+Billing Contact Number (If different than Customer Phone Number): 
+Is Chargeable Repair KCI Done: Yes
+Serial Number of Unit: *serial number*
+||
+
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+
+
+`;
+
+            copyToClipboard(template);
+        }
+
+
+
+function copyphqoTemplate() {
+            const template = `************************************************** Case Title **************************************************
+||
+PH/ TRADE/ 3BD/ ONS/ *laptop model name*/ *issue*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *serial number*
+Product Number: *product number*
+Customer Name: *customer name*
+Customer Phone Number: *Customer Phone Number *
+Customer Alternate Phone Number: na
+Email Address: *Email Address *
+Company Name: *company name if mentioned in address else NA**
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+Customer Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+||
+
+************************************************** Onsite Template **************************************************
+||
+Is it a Quote? Yes
+Work Order Description: 
+Country: PH
+Special: TRADE
+Coverage: 3BD
+Service Type: ONS
+
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+==============================================
+*Pre tool recommendation for part*
+
+Serial Number: *serial number*
+Serial Number: *serial number*
+Failure Id: na
+CT Number: na
+Wise Advisory? No
+Action plan for technician: Part replacement
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+
+======== Quote ========
+Issue Reported by Customer: na
+
+RDT: 2025-05-05
+
+Part Recommended
+Part Number: *part number*
+Part Quantity: 1
+Description: *part description*
+
+Parts Available: Yes
+Name of Contact On Quote: *customer name*
+Company Name on Quote: *company name if mentioned in address else NA**
+Primary Phone Number: *Customer Phone Number *
+Alternate Phone Number: na
+Email Address: *Email Address *
+Service Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Address: 
+Add. Line 1: *Unit/ Flat/ Building*
+Add. Line 2: *Street Name*
+Add. Line 3: *State*
+Add. Line 4: Zip Co
+Billing Name (If different than Customer Name): 
+Billing Contact Number (If different than Customer Phone Number): 
+Is Chargeable Repair KCI Done: Yes
+Serial Number of Unit: *serial number*
+||
+
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+
+`;
+
+copyToClipboard(template);
+
+}
+
+
+function copyAUPURRTemplate() {
+            const template = `************************************************** Case Title **************************************************
+||
+AU/ WARR/ 3BD/ PURR/ *Product name*/ *Issue title*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: *issue*
+*troubleshooting performed*
+
+===================================================
+
+*Pre tool recommendation for part*
+
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *Laptop serial number*
+Product Number: *Laptop Product number*
+Customer Name: *Name of the customer*
+Customer Phone Number: *Customers contact number*
+Customer Alternate Phone Number: *if mentioned else NA*
+Email Address: *Customers Email address*
+Company Name: 
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+
+*Pre tool recommendation for part*
+
+Customer Address: 
+Add. Line 1: *House number*
+Add. Line 2: *Street name*
+Add. Line 3: *City name*
+Add. Line 4: *State name*
+Add. Line 5: *Postal code*
+
+Service Territory: na
+
+RDT: 
+
+Part Recommended
+Part Number: *Part number*
+Part Quantity: 1
+Description: *Part description*
+
+||
+
+************************************************** PURR Template **************************************************
+||
+Country: AU
+Type of Coverage: WARR
+Coverage: 3BD
+Service Type: PURR
+
+Is it a Quote? No
+
+1) Best Time for Pick up: 5 PM 30 MINUTES 
+2) Pick up Date: *RDT*
+3) Does customer have a printer? No
+4) Has the customer been informed about the bubble wrapping and keeping the unit ready for pick up? No
+5) Informed about TAT – 5 to 7 Business days ? Yes
+6) Informed about data backup? No
+7) Educated customer about the pickup and paperwork process? No
+8) Battery status: Removable? No
+||
+
+====================================================================================
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In place of the product name mentione the full given laptop's name
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+
+
+`;
+
+copyToClipboard(template);
+
+}
+
+function copyAUPURRQOTemplate() {
+            const template = `************************************************** Case Title **************************************************
+||
+AU/ Q3BD/ TRADE/ 3BD/ PURR/ *Product name*/ *Issue title*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: *issue*
+*troubleshooting performed*
+
+===================================================
+
+*Pre tool recommendation for part*
+
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *Laptop serial number*
+Product Number: *Laptop Product number*
+Customer Name: *Name of the customer*
+Customer Phone Number: *Customers contact number*
+Customer Alternate Phone Number: *if mentioned else NA*
+Email Address: *Customers Email address*
+Company Name: 
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+
+*Pre tool recommendation for part*
+
+Customer Address: 
+Add. Line 1: *House number*
+Add. Line 2: *Street name*
+Add. Line 3: *City name*
+Add. Line 4: *State name*
+Add. Line 5: *postal  code*
+Billing Address: 
+Add. Line 1: *House number*
+Add. Line 2: *Street name*
+Add. Line 3: *City name*
+Add. Line 4: *State name*
+Add. Line 5: *postal  code*
+
+Service Territory: na
+
+RDT: 
+
+Part Recommended
+Part Number: *Part number*
+Part Quantity: 1
+Description: *Part description*
+
+||
+
+************************************************** PURR Template **************************************************
+||
+Country: AU
+Type of Coverage: Q3BD
+Special: TRADE
+Coverage: 3BD
+Service Type: PURR
+
+Is it a Quote? Yes
+
+1) Best Time for Pick up: 5 PM 30 MINUTES 
+2) Pick up Date: 2025-06-27
+3) Does customer have a printer? No
+4) Has the customer been informed about the bubble wrapping and keeping the unit ready for pick up? No
+5) Informed about TAT – 5 to 7 Business days ? Yes
+6) Informed about data backup? No
+7) Educated customer about the pickup and paperwork process? No
+8) Battery status: Removable? No
+
+======== Quote ========
+Issue Reported by Customer: na
+
+Service Territory: na
+
+RDT: 
+
+Part Recommended
+Part Number: *Part number*
+Part Quantity: 1
+Description: *Part description*
+
+Parts Available: Yes
+Name of Contact On Quote: *Name of the customer*
+Company Name on Quote: 
+Primary Phone Number: *Customers contact number*
+Alternate Phone Number: *if mentioned else NA*
+Email Address: *Customers Email address*
+Service Location: 
+Add. Line 1: *House number*
+Add. Line 2: *Street name*
+Add. Line 3: *City name*
+Add. Line 4: *State name*
+Add. Line 5: *postal  code*
+Billing Address: 
+Add. Line 1: *House number*
+Add. Line 2: *Street name*
+Add. Line 3: *City name*
+Add. Line 4: *State name*
+Add. Line 5: *postal  code*
+Billing Name (If different than Customer Name): 
+Billing Contact Number (If different than Customer Phone Number): 
+Is Chargeable Repair KCI Done: Yes
+Serial Number of Unit: *Laptop serial number*
+||
+
+====================================================================================
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In place of the product name mentione the full given laptop's name
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+
+
+
+`;
+
+copyToClipboard(template);
+
+}
+
+function copymelwalkinTemplate() {
+            const template = `************************************************** Case Title **************************************************
+||
+AU/ WARR/ 3BD/ CARRY IN/ *Product name*/ *Issue title*
+||
+
+{START CASE SUMMARY}
+
+|Problem Description: na
+|Frequency of failure: na
+|How to reproduce the failure: na
+|Error Message: na
+|Troubleshooting: *issue*
+*troubleshooting performed*
+
+===================================================
+
+*Pre tool recommendation for part*
+
+|Root Cause: na
+|Resolution: na
+|Windows Version: na
+|BIOS Version: na
+|Leave blank: 
+
+{END CASE SUMMARY}
+
+************************************************** Case Notes **************************************************
+||
+Serial Number: *Laptop serial number*
+Product Number: *Laptop Product number*
+Customer Name: *Name of the customer*
+Customer Phone Number: *Customers contact number*
+Customer Alternate Phone Number: *if mentioned else NA*
+Email Address: *Customers Email address*
+Company Name: 
+BTTR:  Select:00
+Issue Description: na
+Windows Version: na
+BIOS Version: na
+Root Cause: na
+CT Number: na
+Error Message: na
+Resolution: na
+Failure ID: na
+Customer Type: Individual
+Pick up Location: Front Door
+Dispatch Type: With Part
+Troubleshooting: 
+*issue*
+*troubleshooting performed*
+
+===================================================
+
+*Pre tool recommendation for part*
+
+Customer Address: 
+Add. Line 1: *House number*
+Add. Line 2: *Street name*
+Add. Line 3: *City name*
+Add. Line 4: *State name*
+Add. Line 5: *Postal code*
+
+Service Territory: na
+
+RDT: 
+
+Part Recommended
+Part Number: *Part number*
+Part Quantity: 1
+Description: *Part description*
+
+||
+
+************************************************** CARRY-IN TEMPLATE **************************************************
+
+Customer Name: *Customers name*
+
+Phone Number: *Customer's contact number*
+
+Alternate Number: N/A
+
+Email Address: *Customer's email address*
+
+Best Reachable Time (BRT): 9 AM – 5 PM
+
+Part Recommended: *Part number*
+
+Type of Service: Carry-in
+
+Service Center Address Given As: *Carryin address*
+
+====================================================================================
+
+* Mention only the issue (2–3 words) in the 'issue' fields.
+* In place of the product name mentione the full given laptop's name
+* In the 'Troubleshooting' sections, describe the symptoms and steps clearly but do NOT mention the PRE tool.
+* Fill only the fields where input is requested (e.g., fields surrounded by placeholder text like 'serial number', 'part number', etc.).
+* Do not add asterisks in the output.
+* Do not assume or invent any values unless explicitly provided.
+* Keep the format exactly as in the original template.
+* 'RDT' should always be the next calendar day from the case submission date, in YYYY-MM-DD format."
+
+
+
+`;
+
+copyToClipboard(template);
+
+}
+
+
+
+    </script>
+</head>
+<body>
+
+<div class="button-62" onclick="copyAustraliaOnsiteTemplate()">
+    1. AU ONSITE
+</div>
+
+<div class="button-62" onclick="copyNZOnsiteTemplate()">
+    2. NZ ONSITE
+</div>
+
+<div class="button-62" onclick="copyMYOnsiteTemplate()">
+    3. MY ONSITE
+</div>
+
+<div class="button-62" onclick="copySGOnsiteTemplate()">
+    4. SG ONSITE
+</div>
+
+<div class="button-62" onclick="copyPHOnsiteTemplate()">
+    5. PH ONSITE
+</div>
+
+<div class="button-62" onclick="copyIDOnsiteTemplate()">
+    6. ID ONSITE
+</div>
+<br>
+<br>
+
+<div class="button-62" onclick="copyauqoTemplate()">
+    7. AU ONS QUOTE
+</div>
+
+<div class="button-62" onclick="copynzqoTemplate()">
+    8. NZ ONS QUOTE
+</div>
+
+
+<div class="button-62" onclick="copymyqoTemplate()">
+    9. MY ONS QUOTE
+</div>
+
+<div class="button-62" onclick="copysgqoTemplate()">
+   10. SG ONS QUOTE
+</div>
+
+<div class="button-62" onclick="copyphqoTemplate()")">
+   11. PH ONS QUOTE
+</div>
+<br>
+<br>
+<div class="button-62" onclick="copyAUPURRTemplate()")">
+   12. AU PURR
+</div>
+
+<div class="button-62" onclick="copyAUPURRQOTemplate()")">
+   13. AU PURR QUOTE
+</div>
+
+<div class="button-62" onclick="copymelwalkinTemplate()")">
+   14. MEL-WALKIN
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
