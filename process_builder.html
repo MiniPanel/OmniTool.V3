@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Case Guide Builder</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      background: #181818;
+      color: #eee;
+    }
+    #guideHeader {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1e1e1e;
+      padding: 8px 12px;
+      z-index: 1000;
+      border-bottom: 1px solid #333;
+      margin-top: 0;
+    }
+    #guideTitle {
+      font-size: 20px;
+      margin: 0;
+      flex: 1;
+      text-align: center;
+    }
+    #guideActions {
+      display: flex;
+      gap: 6px;
+    }
+    #guideActions button {
+      background: #333;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 6px;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #guideActions button:hover {
+      background: #555;
+    }
+    #sidebar {
+      width: 250px;
+      background: #111;
+      padding: 15px;
+      box-sizing: border-box;
+      border-right: 1px solid #333;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+    }
+    #sidebar h2 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+    .guide-btn {
+      padding: 10px;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 5px;
+      text-align: left;
+      cursor: pointer;
+      color: #eee;
+      position: relative;
+    }
+    .guide-btn:hover {
+      background: #333;
+    }
+    /* Custom context menu for guide buttons */
+    .context-menu {
+      position: absolute;
+      z-index: 2000;
+      background: #232323;
+      border: 1px solid #444;
+      border-radius: 5px;
+      box-shadow: 2px 2px 6px #000a;
+      min-width: 90px;
+      display: none;
+      color: #eee;
+    }
+    .context-menu-item {
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .context-menu-item:hover {
+      background: #333;
+    }
+    #addGuideBtn {
+      margin-top: auto;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #addGuideBtn:hover {
+      background: #0056b3;
+    }
+    #importGuideBtn {
+      margin-top: 10px;
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #importGuideBtn:hover {
+      background: #1e7e34;
+    }
+    #main {
+      flex: 1;
+      padding: 0 20px 20px 20px;
+      overflow-y: auto;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .step-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      border: 1px solid #555;
+      border-radius: 8px;
+      padding: 0;
+      margin-bottom: 20px;
+      background-color: #1e1e1e;
+      max-width: 900px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+    .imgContainer {
+      position: relative;
+      display: inline-block;
+      background: #232323;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      padding: 0;
+    }
+    .step-box img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+      background: #232323;
+      border-radius: 8px;
+      margin: 0;
+      box-shadow: none;
+    }
+    .expandBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px 8px;
+      z-index: 5;
+    }
+    .step-box textarea {
+      width: 90%;
+      min-height: 60px;
+      resize: vertical;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #666;
+      background: #2b2b2b;
+      color: white;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .controls {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      gap: 6px;
+      z-index: 10;
+    }
+    .control-btn {
+      background: #333;
+      border: none;
+      color: #eee;
+      font-size: 14px;
+      padding: 4px 6px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    .control-btn:hover {
+      background: #555;
+    }
+    #addStepBtn, #saveGuideBtn, #deleteGuideBtn, #exportGuideBtn {
+      padding: 6px 10px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-right: 6px;
+    }
+    #addStepBtn { background: #28a745; color: white; }
+    #addStepBtn:hover { background: #1e7e34; }
+    #saveGuideBtn { background: #ffc107; color: black; }
+    #saveGuideBtn:hover { background: #e0a800; }
+    #deleteGuideBtn { background: #dc3545; color: white; }
+    #deleteGuideBtn:hover { background: #b52b3a; }
+    #exportGuideBtn { background: #17a2b8; color: white; }
+    #exportGuideBtn:hover { background: #117a8b; }
+    input[type="file"] { display: none; }
+    #fullscreenOverlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+    #fullscreenOverlay img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+    #fullscreenOverlay span {
+      position: absolute;
+      top: 20px; right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    #closeFullscreenBtn {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 24px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+      background: #232323;
+      color: #fff;
+      cursor: pointer;
+      opacity: 0.92;
+      z-index: 1000;
+    }
+    #closeFullscreenBtn:hover {
+      background: #444;
+      opacity: 1;
+    }
+    /* Fix for file input overlay */
+    #importFileInput {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <h2>Process Guides</h2>
+    <div id="guideList"></div>
+    <button id="addGuideBtn">+ Add Process Guide</button>
+    <button id="importGuideBtn">⬆️ Import JSON</button>
+    <input type="file" id="importFileInput" accept="application/json">
+    <!-- Custom context menu for guide buttons -->
+    <div id="guideContextMenu" class="context-menu">
+      <div class="context-menu-item" id="editGuideNameMenuItem">Edit Name</div>
+    </div>
+  </div>
+  <!-- Main content -->
+  <div id="main">
+    <div id="guideHeader">
+      <h1 id="guideTitle">No Guide Selected</h1>
+      <div id="guideActions">
+        <button id="addStepBtn" disabled title="Add Step">＋</button>
+        <button id="saveGuideBtn" disabled title="Save Guide">💾</button>
+        <button id="deleteGuideBtn" disabled title="Delete Guide">🗑️</button>
+        <button id="exportGuideBtn" title="Export as JSON">⬇️</button>
+      </div>
+    </div>
+    <input type="file" id="fileInput" accept="image/*">
+    <div id="stepsContainer"></div>
+  </div>
+  <!-- Fullscreen Overlay -->
+  <div id="fullscreenOverlay" onclick="if(event.target===this)closeFullscreen()">
+    <span onclick="closeFullscreen()">&times;</span>
+    <button id="closeFullscreenBtn" onclick="closeFullscreen()">Close</button>
+    <img id="fullscreenImg" src="">
+  </div>
+  <script>
+    const guideListEl = document.getElementById("guideList");
+    const stepsContainer = document.getElementById("stepsContainer");
+    const addGuideBtn = document.getElementById("addGuideBtn");
+    const addStepBtn = document.getElementById("addStepBtn");
+    const saveGuideBtn = document.getElementById("saveGuideBtn");
+    const deleteGuideBtn = document.getElementById("deleteGuideBtn");
+    const exportGuideBtn = document.getElementById("exportGuideBtn");
+    const fileInput = document.getElementById("fileInput");
+    const guideTitle = document.getElementById("guideTitle");
+
+    // Import JSON elements
+    const importGuideBtn = document.getElementById("importGuideBtn");
+    const importFileInput = document.getElementById("importFileInput");
+
+    // Context menu elements for renaming
+    const guideContextMenu = document.getElementById("guideContextMenu");
+    const editGuideNameMenuItem = document.getElementById("editGuideNameMenuItem");
+
+    let guides = JSON.parse(localStorage.getItem("guides") || "{}");
+    let currentGuide = null;
+    let contextMenuTargetGuideName = null;
+
+    function renderSidebar() {
+      guideListEl.innerHTML = "";
+      for (const name in guides) {
+        const btn = document.createElement("button");
+        btn.className = "guide-btn";
+        btn.textContent = name;
+        btn.oncontextmenu = (event) => {
+          event.preventDefault();
+          showGuideContextMenu(event, name, btn);
+        };
+        btn.onclick = () => loadGuide(name);
+        guideListEl.appendChild(btn);
+      }
+    }
+
+    function showGuideContextMenu(event, guideName, btn) {
+      contextMenuTargetGuideName = guideName;
+      // Place the context menu
+      guideContextMenu.style.display = 'block';
+      let sidebarRect = document.getElementById("sidebar").getBoundingClientRect();
+      let btnRect = btn.getBoundingClientRect();
+      // Position context menu relative to sidebar
+      guideContextMenu.style.left = (btnRect.left - sidebarRect.left + 20) + "px";
+      guideContextMenu.style.top = (btnRect.top - sidebarRect.top + 5) + "px";
+    }
+
+    // Hide context menu when clicking elsewhere
+    document.addEventListener('click', function(e) {
+      if (!guideContextMenu.contains(e.target)) {
+        guideContextMenu.style.display = 'none';
+      }
+    });
+
+    // Edit guide name handler
+    editGuideNameMenuItem.onclick = function() {
+      if (!contextMenuTargetGuideName) return;
+      let newName = prompt('Edit guide name:', contextMenuTargetGuideName);
+      if (!newName || newName.trim() === contextMenuTargetGuideName) {
+        guideContextMenu.style.display = 'none';
+        return;
+      }
+      newName = newName.trim();
+      if (guides[newName] && newName !== contextMenuTargetGuideName) {
+        alert('A guide with this name already exists.');
+        guideContextMenu.style.display = 'none';
+        return;
+      }
+      // Rename guide
+      guides[newName] = guides[contextMenuTargetGuideName];
+      delete guides[contextMenuTargetGuideName];
+      // If renaming current guide, update state & UI
+      if (currentGuide === contextMenuTargetGuideName) {
+        currentGuide = newName;
+        guideTitle.textContent = newName;
+      }
+      localStorage.setItem("guides", JSON.stringify(guides));
+      renderSidebar();
+      guideContextMenu.style.display = 'none';
+    };
+
+    function loadGuide(name) {
+      currentGuide = name;
+      guideTitle.textContent = name;
+      stepsContainer.innerHTML = "";
+      guides[name].forEach((step, idx) => {
+        addStep(step.image, step.text, idx);
+      });
+      addStepBtn.disabled = false;
+      saveGuideBtn.disabled = false;
+      deleteGuideBtn.disabled = false;
+    }
+
+    function addStep(imageData = null, text = "", index = null) {
+      const stepBox = document.createElement("div");
+      stepBox.className = "step-box";
+      stepBox.style.position = "relative";
+
+      // Controls (delete step)
+      const controls = document.createElement("div");
+      controls.className = "controls";
+
+      // Delete step button
+      const deleteBtn = document.createElement("button");
+      deleteBtn.className = "control-btn";
+      deleteBtn.textContent = "🗑";
+      deleteBtn.onclick = () => stepBox.remove();
+
+      controls.appendChild(deleteBtn);
+      stepBox.appendChild(controls);
+
+      // Image container with expand button
+      const imgContainer = document.createElement("div");
+      imgContainer.className = "imgContainer";
+
+      const img = document.createElement("img");
+      if (imageData) img.src = imageData;
+
+      // Expand button
+      const expandBtn = document.createElement("button");
+      expandBtn.className = "expandBtn";
+      expandBtn.textContent = "⤢";
+      expandBtn.title = "Expand image";
+      expandBtn.onclick = () => openFullscreen(imageData || img.src);
+
+      imgContainer.appendChild(img);
+      imgContainer.appendChild(expandBtn);
+
+      stepBox.appendChild(imgContainer);
+
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      stepBox.appendChild(textarea);
+
+      stepsContainer.appendChild(stepBox);
+    }
+
+    addGuideBtn.onclick = () => {
+      const name = prompt("Enter process guide name:");
+      if (!name) return;
+      if (guides[name]) {
+        alert("Guide with this name already exists.");
+        return;
+      }
+      guides[name] = [];
+      currentGuide = name;
+      renderSidebar();
+      loadGuide(name);
+    };
+
+    addStepBtn.onclick = () => fileInput.click();
+
+    fileInput.onchange = (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        addStep(e.target.result, "");
+      };
+      reader.readAsDataURL(file);
+      event.target.value = "";
+    };
+
+    saveGuideBtn.onclick = () => {
+      if (!currentGuide) return;
+      const steps = [];
+      const boxes = stepsContainer.querySelectorAll(".step-box");
+      boxes.forEach(box => {
+        const img = box.querySelector("img").src;
+        const text = box.querySelector("textarea").value;
+        steps.push({ image: img, text: text });
+      });
+      guides[currentGuide] = steps;
+      localStorage.setItem("guides", JSON.stringify(guides));
+      alert("Guide saved!");
+    };
+
+    deleteGuideBtn.onclick = () => {
+      if (!currentGuide) return;
+      if (!confirm(`Delete guide "${currentGuide}"? This cannot be undone.`)) return;
+      delete guides[currentGuide];
+      localStorage.setItem("guides", JSON.stringify(guides));
+      currentGuide = null;
+      guideTitle.textContent = "No Guide Selected";
+      stepsContainer.innerHTML = "";
+      addStepBtn.disabled = true;
+      saveGuideBtn.disabled = true;
+      deleteGuideBtn.disabled = true;
+      renderSidebar();
+    };
+
+    exportGuideBtn.onclick = () => {
+      const jsonStr = JSON.stringify(guides, null, 2);
+      const blob = new Blob([jsonStr], {type: "application/json"});
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'process-guides.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    };
+
+    // Import JSON feature (replacing all guides)
+    importGuideBtn.onclick = () => {
+      importFileInput.value = '';
+      importFileInput.click();
+    };
+
+    importFileInput.onchange = (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (typeof imported !== 'object' || Array.isArray(imported) || imported === null) {
+            alert("Invalid JSON format for guides.");
+            return;
+          }
+          // === REPLACEMENT LOGIC HERE ===
+          guides = {};
+          for (const name in imported) {
+            if (!imported[name] || !Array.isArray(imported[name])) continue;
+            guides[name] = imported[name];
+          }
+          localStorage.setItem("guides", JSON.stringify(guides));
+          renderSidebar();
+          currentGuide = null;
+          guideTitle.textContent = "No Guide Selected";
+          stepsContainer.innerHTML = "";
+          addStepBtn.disabled = true;
+          saveGuideBtn.disabled = true;
+          deleteGuideBtn.disabled = true;
+          alert("Import complete. All previous guides have been replaced.");
+        } catch {
+          alert('Failed to import: Invalid JSON.');
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = "";
+    };
+
+    function openFullscreen(src) {
+      const overlay = document.getElementById("fullscreenOverlay");
+      const img = document.getElementById("fullscreenImg");
+      img.src = src;
+      overlay.style.display = "flex";
+    }
+
+    function closeFullscreen() {
+      document.getElementById("fullscreenOverlay").style.display = "none";
+    }
+
+    renderSidebar();
+    addStepBtn.disabled = true;
+    saveGuideBtn.disabled = true;
+    deleteGuideBtn.disabled = true;
+
+    // Prevent default browser context menu on .guide-btn
+    guideListEl.addEventListener('contextmenu', function(e) {
+      if (e.target.classList.contains('guide-btn')) {
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
