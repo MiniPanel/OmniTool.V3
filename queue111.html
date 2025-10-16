@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APAC Queue Copy Tool</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #4a1f2a;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+h1 {
+    color: #fff;
+}
+h2 {
+    color: #ffbdbd;
+    border-bottom: 2px solid #ff8f8f;
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+.button-62 {
+    background: linear-gradient(to right, #ff5f6d, #ffc371);
+    border: none;
+    border-radius: 12px;
+    color: #b30000;
+    cursor: pointer;
+    display: block;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 2.5;
+    margin: 10px auto;
+    width: 80%;
+    max-width: 380px;
+    text-align: center;
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.button-62:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 12px rgba(255, 200, 200, 0.5);
+}
+.toast {
+    visibility: hidden;
+    min-width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 14px;
+}
+.toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 1.8s;
+}
+@keyframes fadein {
+    from { bottom: 0; opacity: 0; }
+    to { bottom: 30px; opacity: 1; }
+}
+@keyframes fadeout {
+    from { bottom: 30px; opacity: 1; }
+    to { bottom: 0; opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<h1>🌏 APAC Queue Copy Tool</h1>
+
+<!-- AUSTRALIA -->
+<h2>🇦🇺 Australia (ANZ / AU Queues)</h2>
+<button class="button-62" onclick="copyQueue('ANZ_RPA_Onsite')">ANZ onsite bot queue</button>
+<button class="button-62" onclick="copyQueue('ANZ_RPA_PURR')">ANZ bot PURR queue</button>
+<button class="button-62" onclick="copyQueue('AU_PPS_KCI')">AU manual onsite queue</button>
+<button class="button-62" onclick="copyQueue('AUY_AD BENCH PURR')">AU manual PURR queue</button>
+<button class="button-62" onclick="copyQueue('SPY_AD QUOTE BENCH-PPS')">ANZ quote PURR queue</button>
+<button class="button-62" onclick="copyQueue('SPY_AD QUOTE ONSITE-PPS')">ANZ onsite PURR queue</button>
+<button class="button-62" onclick="copyQueue('SPY_AD_CSR ADMIN')">ANZ CSR queue</button>
+<button class="button-62" onclick="copyQueue('SPY_ES CaseReview')">ANZ CRM queue</button>
+<button class="button-62" onclick="copyQueue('SPY_ES DOA')">ANZ DOA queue</button>
+<button class="button-62" onclick="copyQueue('NZA_AD PURR')">New Zealand manual PURR queue</button>
+
+<!-- INDONESIA -->
+<h2>🇮🇩 Indonesia</h2>
+<button class="button-62" onclick="copyQueue('IDY_SO CSR')">Indonesia CSR queue</button>
+<button class="button-62" onclick="copyQueue('IDY_SO PPS ONSITE')">Indonesia onsite queue</button>
+<button class="button-62" onclick="copyQueue('IDY_SO PSG ONSITE')">Indonesia onsite queue</button>
+
+<!-- INDIA -->
+<h2>🇮🇳 India (ADP BOT)</h2>
+<button class="button-62" onclick="copyQueue('INY_RPA_ADP')">ADP approval bot queue</button>
+
+<!-- MALAYSIA -->
+<h2>🇲🇾 Malaysia</h2>
+<button class="button-62" onclick="copyQueue('MYY_AD PPS ONSITE QUOTE')">Malaysia onsite quote queue</button>
+<button class="button-62" onclick="copyQueue('MYY_LP PPS CSR')">Malaysia CSR queue</button>
+<button class="button-62" onclick="copyQueue('MYY_OS PPS DISPATCH')">Malaysia onsite queue</button>
+
+<!-- PHILIPPINES -->
+<h2>🇵🇭 Philippines</h2>
+<button class="button-62" onclick="copyQueue('PHY_CR PPS ONSIT PSG CSR')">Philippines CSR queue</button>
+<button class="button-62" onclick="copyQueue('PHY_CR PPS ONSITE PSG')">Philippines onsite queue</button>
+<button class="button-62" onclick="copyQueue('PHY_CR PPS ONSITE TRADE')">Philippines onsite quote queue</button>
+
+<!-- SINGAPORE -->
+<h2>🇸🇬 Singapore</h2>
+<button class="button-62" onclick="copyQueue('SEA_SGP_RA_CSRAPart')">Singapore CSR queue</button>
+<button class="button-62" onclick="copyQueue('SEA_SGP_RA_MonitorPart')">Singapore commercial monitor CSR queue</button>
+<button class="button-62" onclick="copyQueue('SGY_AD CC QUOTATION')">Singapore quote queue</button>
+<button class="button-62" onclick="copyQueue('SEA_SGP_RA_ONSITE')">Singapore onsite queue</button>
+<button class="button-62" onclick="copyQueue('SEA_SGP_RA_PURR')">Singapore PURR queue</button>
+
+<!-- OTHER / REGIONAL -->
+<h2>🌐 Other / Regional</h2>
+<button class="button-62" onclick="copyQueue('APAC_CC_BLR CarePack')">CarePack updation</button>
+<button class="button-62" onclick="copyQueue('APY_AD POP VALIDATION_C')">Warranty updation</button>
+
+<div id="toast" class="toast">Copied!</div>
+
+<script>
+function copyQueue(queueName) {
+    navigator.clipboard.writeText(queueName).then(() => {
+        showToast(`✅ Copied: ${queueName}`);
+    }).catch(err => {
+        console.error('❌ Failed to copy: ', err);
+    });
+}
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.className = "toast show";
+    setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 2300);
+}
+</script>
+
+</body>
+</html>
